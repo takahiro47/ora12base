@@ -5,6 +5,14 @@ The ora12base project, is a relevantly simple vagrant project to automate setup 
 
 ### From your host machine
 
+Install a Vagrant plugin which automatically installs the host's VirtualBox Guest Additions on the guest system.
+
+```
+vagrant gem install vagrant-vbguest
+```
+
+Setup a linux machine.
+
 ```
 vagrant up
 vagrant ssh
@@ -26,6 +34,8 @@ su - oracle
 
 ### The final step of which is 12c software root.sh commands (i.e. as root again)
 
+As root user:
+
 ``` 
 /etc/oraInventory/orainstRoot.sh
 /u01/product/12.1.0/db_1/root.sh
@@ -33,21 +43,53 @@ su - oracle
 
 ### Now via dbca we can create a 12c database
 
+As root user:
+
 ```
 rm /tmp/linuxamd64_12c_database_*zip
+```
+
+As oracle user:
+
+```
 dbca -silent -createDatabase -responseFile  /vagrant/dbca.rsp
 ```
 
 ### note if you have issues and need to cleanup after any 12c software failures
+
+As oracle user:
 
 ```
 rm -Rf /etc/oraInventory/*
 rm -Rf /u01/product/12.1.0/db_1/*
 ```
 
+### Connect to Oracle Database as sysdba
+
+As oracle user:
+
+```
+$ sqlplus / as sysdba
+```
+
+The command results will be:
+
+```
+[oracle@ora12c66 ~]$ sqlplus / as sysdba
+
+SQL*Plus: Release 12.1.0.2.0 Production on Sat Dec 5 17:39:59 2015
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
 
 
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
 
+SQL>
+```
+
+Enjoy!
 
    
 
