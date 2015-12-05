@@ -6,6 +6,7 @@ The ora12base project, is a relevantly simple vagrant project to automate setup 
 ### From your host machine
 
 Install a Vagrant plugin which automatically installs the host's VirtualBox Guest Additions on the guest system.
+https://github.com/dotless-de/vagrant-vbguest
 
 ```
 vagrant gem install vagrant-vbguest
@@ -75,7 +76,7 @@ $ sqlplus / as sysdba
 The command results will be:
 
 ```
-[oracle@ora12c66 ~]$ sqlplus / as sysdba
+$ sqlplus / as sysdba
 
 SQL*Plus: Release 12.1.0.2.0 Production on Sat Dec 5 17:39:59 2015
 
@@ -85,6 +86,12 @@ Copyright (c) 1982, 2014, Oracle.  All rights reserved.
 Connected to:
 Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
 With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+
+SQL> show con_name
+
+CON_NAME
+------------------------------
+orcl12c
 
 SQL>
 ```
