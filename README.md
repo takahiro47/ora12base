@@ -93,6 +93,11 @@ CON_NAME
 ------------------------------
 orcl12c
 
+SQL> CONN SYS AS SYSDBA
+
+Enter password: qwe123
+Connected.
+
 SQL>
 ```
 
